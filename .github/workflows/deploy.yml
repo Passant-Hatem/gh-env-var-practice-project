@@ -8,10 +8,20 @@ env:
   MONGODB_DB_NAME: gha-demo
 jobs:
   test:
-    environment: testing
+    #to use variabels that associated with a specfic environment add the name of target envirnoment
+    environment: testing 
     runs-on: ubuntu-latest
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.ea3lv36.mongodb.net
+      # add username and password hard coded  
+      #MONGODB_USERNAME: bassantalhofny
+      #MONGODB_PASSWORD: Mml4G7N6hZAnmMes
+      
+      # add username and password using secrets
+      #MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
+      #MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
+
+      # add variabels from an environment
       MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
       MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
       PORT: 8080
